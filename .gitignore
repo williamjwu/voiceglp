@@ -1,0 +1,12 @@
+# environments and caches
+.venv/
+__pycache__/
+data/
+
+# large regenerable artifacts (parquet features/scores exceed GitHub's 100 MB limit;
+# regenerate via scripts/01_score.py — see README quickstart)
+results/*.parquet
+results/model_scoring.log
+
+# keep: results/manifests/, results/opus_sweep.csv, results/model_scoring_pipeline.sh
+.claude/

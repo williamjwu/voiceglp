@@ -1,0 +1,27 @@
+[project]
+name = "audioprune"
+version = "0.0.1"
+description = "Benchmark of data selection strategies (FFT/spectral + model-based) for fine-tuning speech foundation models"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "scikit-learn",
+]
+
+[project.optional-dependencies]
+# stage 1 corpus streaming + stages 3/4 (GPU sessions)
+full = [
+    # <4: datasets 4.x decodes audio via torchcodec, which needs FFmpeg system
+    # libs; 3.x uses soundfile directly (works everywhere)
+    "datasets[audio]<4",
+    "transformers",
+    "torch",
+    "jiwer",
+    "soundfile",
+    "wandb",
+]
+
+[tool.setuptools.packages.find]
+include = ["audioprune*"]
